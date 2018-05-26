@@ -1,56 +1,72 @@
 package com.havan.customviews
 
-import android.app.Activity
 import android.app.Dialog
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.Window
+import com.havan.constants.DialogType
 import com.havan.hereever.R
 
 // Created by HaVan on 5/26/2018
 
-class CustomYesNoDialog(activity: Activity, private var interFace: YesNoInterFace?) {
+class MyDialog(context: Context, private var interFace: ClickListener?) {
 
-    private val alertDialog: Dialog
+    private val myDialog: Dialog
 
     init {
-        alertDialog = Dialog(activity, R.style.PauseDialog)
-        alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        alertDialog.setCancelable(false)
-        if (alertDialog.window != null)
-            alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        alertDialog.setCanceledOnTouchOutside(false)
-        alertDialog.setContentView(R.layout.view_my_custom_dialog)
+        myDialog = Dialog(context, R.style.PauseDialog)
+        myDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        myDialog.setCancelable(false)
+        if (myDialog.window != null)
+            myDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        myDialog.setCanceledOnTouchOutside(false)
+        myDialog.setContentView(R.layout.view_my_custom_dialog)
     }
 
-    fun setListener(yesNoInterFace: YesNoInterFace) {
-        this.interFace = yesNoInterFace
+    fun setListener(listener: ClickListener) {
+        this.interFace = listener
     }
 
-    fun showAlertDialog( type: Int,  title: String, message: String) {
+    fun showAlertDialog(type: Int, title: String, message: String) {
 
-        val tvContent = alertDialog.findViewById<MyTextView>(R.id.tv_content)
-        val tvTitle = alertDialog.findViewById<MyTextView>(R.id.tv_title)
-        val tvCancel = alertDialog.findViewById<MyTextView>(R.id.btn_cancel_dialog)
-        val tvOK = alertDialog.findViewById<MyTextView>(R.id.btn_ok_dialog)
-        tvTitle.setText(title)
-        tvContent.setText(message)
+        bindView(title, message)
+        when (type) {
+            DialogType.TYPE_CONFIRM -> {
 
+            }
+            DialogType.TYPE_ERROR -> {
+            }
+            DialogType.TYPE_INFO -> {
+            }
+            DialogType.TYPE_WARNING -> {
+            }
+        }
+
+        myDialog.show()
+
+    }
+
+    private fun bindView(title: String, message: String) {
+        val tvContent = myDialog.findViewById<MyTextView>(R.id.tv_content)
+        val tvTitle = myDialog.findViewById<MyTextView>(R.id.tv_title)
+        val tvCancel = myDialog.findViewById<MyTextView>(R.id.btn_cancel_dialog)
+        val tvOK = myDialog.findViewById<MyTextView>(R.id.btn_ok_dialog)
+        tvTitle.text = title
+        tvContent.text = message
         tvCancel.setOnClickListener {
             interFace!!.onNoClicked()
-            alertDialog.dismiss()
+            myDialog.dismiss()
         }
 
         tvOK.setOnClickListener {
             interFace!!.onYesClicked()
-            alertDialog.dismiss()
+            myDialog.dismiss()
         }
-
-        alertDialog.show()
 
     }
 
-    interface YesNoInterFace {
+    interface ClickListener {
 
         fun onYesClicked()
 
