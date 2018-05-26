@@ -8,12 +8,21 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="PauseDialog" parent="Base.Theme.AppCompat.Dialog">
-        <item name="android:windowAnimationStyle">@style/PauseDialogAnimation</item>
+    <style name="pause_dialog" parent="Base.Theme.AppCompat.Dialog">
+        <item name="android:windowAnimationStyle">@style/dialog_animation</item>
     </style>
 
-    <style name="PauseDialogAnimation">
+    <style name="dialog_animation">
         <item name="android:windowEnterAnimation">@anim/fade_in</item>
         <item name="android:windowExitAnimation">@anim/fade_out</item>
     </style>
+
+    <style name="normal_button">
+        <item name="android:layout_marginEnd">@dimen/margin_16</item>
+        <item name="android:layout_marginStart">@dimen/margin_16</item>
+        <item name="android:paddingEnd">@dimen/padding_16</item>
+        <item name="android:paddingStart">@dimen/padding_16</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+    </style>
+
 </resources>

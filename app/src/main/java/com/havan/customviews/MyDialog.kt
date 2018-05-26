@@ -4,18 +4,23 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.view.View
 import android.view.Window
+import android.widget.TextView
 import com.havan.constants.DialogType
 import com.havan.hereever.R
 
 // Created by HaVan on 5/26/2018
 
-class MyDialog(context: Context, private var interFace: ClickListener?) {
+public class MyDialog(context: Context, private var interFace: ClickListener?) {
 
-    private val myDialog: Dialog
+    private val myDialog: Dialog = Dialog(context, R.style.pause_dialog)
+    private var tvContent: TextView? = null
+    private var tvTitle: TextView? = null
+    private var tvCancel: TextView? = null
+    private var tvOK: TextView? = null
 
     init {
-        myDialog = Dialog(context, R.style.PauseDialog)
         myDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         myDialog.setCancelable(false)
         if (myDialog.window != null)
@@ -33,13 +38,19 @@ class MyDialog(context: Context, private var interFace: ClickListener?) {
         bindView(title, message)
         when (type) {
             DialogType.TYPE_CONFIRM -> {
-
+                tvTitle?.setTextColor(myDialog.context.resources.getColor(R.color.green_70))
             }
             DialogType.TYPE_ERROR -> {
+                tvTitle?.setTextColor(myDialog.context.resources.getColor(R.color.red_50))
+                tvCancel?.visibility = View.GONE
             }
             DialogType.TYPE_INFO -> {
+                tvTitle?.setTextColor(myDialog.context.resources.getColor(R.color.blue_70))
+                tvCancel?.visibility = View.GONE
             }
             DialogType.TYPE_WARNING -> {
+                tvTitle?.setTextColor(myDialog.context.resources.getColor(R.color.orange_70))
+                tvCancel?.visibility = View.GONE
             }
         }
 
@@ -47,20 +58,31 @@ class MyDialog(context: Context, private var interFace: ClickListener?) {
 
     }
 
+    public fun setNegaviteButtonText(text: String) {
+
+        tvCancel?.text = text
+    }
+
+    public fun setPositiveButtonText(text: String) {
+
+        tvOK?.text = text
+    }
+
     private fun bindView(title: String, message: String) {
-        val tvContent = myDialog.findViewById<MyTextView>(R.id.tv_content)
-        val tvTitle = myDialog.findViewById<MyTextView>(R.id.tv_title)
-        val tvCancel = myDialog.findViewById<MyTextView>(R.id.btn_cancel_dialog)
-        val tvOK = myDialog.findViewById<MyTextView>(R.id.btn_ok_dialog)
-        tvTitle.text = title
-        tvContent.text = message
-        tvCancel.setOnClickListener {
-            interFace!!.onNoClicked()
+        tvContent = myDialog.findViewById<MyTextView>(R.id.tv_content)
+        tvTitle = myDialog.findViewById<MyTextView>(R.id.tv_title)
+        tvCancel = myDialog.findViewById<MyTextView>(R.id.btn_cancel_dialog)
+        tvOK = myDialog.findViewById<MyTextView>(R.id.btn_ok_dialog)
+
+        tvTitle?.text = title
+        tvContent?.text = message
+        tvCancel?.setOnClickListener {
+            interFace!!.onCancelClicked()
             myDialog.dismiss()
         }
 
-        tvOK.setOnClickListener {
-            interFace!!.onYesClicked()
+        tvOK?.setOnClickListener {
+            interFace!!.onOKClicked()
             myDialog.dismiss()
         }
 
@@ -68,8 +90,8 @@ class MyDialog(context: Context, private var interFace: ClickListener?) {
 
     interface ClickListener {
 
-        fun onYesClicked()
+        fun onOKClicked()
 
-        fun onNoClicked()
+        fun onCancelClicked()
     }
 }

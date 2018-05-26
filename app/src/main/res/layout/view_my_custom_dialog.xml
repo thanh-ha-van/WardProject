@@ -4,63 +4,62 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
+    android:layout_marginLeft="@dimen/margin_24"
+    android:layout_marginRight="@dimen/margin_24"
     android:background="@drawable/shape_rectangle_gray"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="@dimen/margin_16">
 
-    <com.havan.customviews.MyTextView
-        android:id="@+id/tv_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_title"
-        android:layout_marginTop="16dp"
-        android:text="This is the custom content of the dialgo"
-        android:padding="5dp"
-        android:textColor="@color/colorAccent"
-        android:textSize="16sp" />
 
     <com.havan.customviews.MyTextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="5dp"
+        android:padding="@dimen/padding_8"
         android:text="Title"
         android:textAllCaps="true"
-        android:textColor="@color/colorAccent"
-        android:textSize="18sp"
+        android:textColor="@color/blue_70"
+        android:textSize="@dimen/text_size_20"
         app:myFont="Roboto_Bold" />
+
+    <com.havan.customviews.MyTextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginTop="@dimen/margin_16"
+        android:text="This is the custom content of the dialog"
+        android:textColor="@color/black_50"
+        android:textSize="@dimen/text_size_14" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/margin_16"
         android:gravity="center">
 
         <com.havan.customviews.MyTextView
             android:id="@+id/btn_cancel_dialog"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="40dp"
+            style="@style/normal_button"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_size_30"
             android:background="@drawable/shape_rectangle_orange"
             android:gravity="center"
             android:text="@string/op_cancel"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textColor="@color/white" />
 
         <com.havan.customviews.MyTextView
             android:id="@+id/btn_ok_dialog"
+            style="@style/normal_button"
             android:layout_width="100dp"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/button_size_30"
             android:background="@drawable/shape_rectangle_blue"
             android:gravity="center"
             android:text="@string/ok"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textColor="@color/white" />
     </LinearLayout>
 
 </RelativeLayout>
