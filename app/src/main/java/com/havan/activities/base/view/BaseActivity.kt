@@ -9,7 +9,7 @@ import com.havan.activities.base.presenter.BasePresenter
 
 // Created by HaVan on 5/26/2018.
 
-abstract class BaseMvpActivity<in V : BaseView, T : BasePresenter<V>>
+abstract class BaseActivity<in V : BaseView, T : BasePresenter<V>>
     : AppCompatActivity(), BaseView {
 
     override fun onCreate(savedInstanceState: Bundle?) {

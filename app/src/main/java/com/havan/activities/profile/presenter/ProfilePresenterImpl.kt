@@ -10,6 +10,5 @@ class ProfilePresenterImpl : BasePresenterImpl<ProfileView>(),
         ProfilePresenter {
 
     override fun loadProfile(name: String) {
-
     }
 }

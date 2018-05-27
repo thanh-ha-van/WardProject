@@ -4,7 +4,7 @@ import android.content.Context
 import android.graphics.Typeface
 import android.support.v7.widget.AppCompatTextView
 import android.util.AttributeSet
-import com.havan.hereever.R
+import com.havan.R
 
 // Created by HaVan on 5/26/2018.
 
