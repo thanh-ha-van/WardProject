@@ -2,9 +2,7 @@ package com.havan.base.view
 
 import android.content.Context
 
-
 // Created by HaVan on 5/26/2018.
-
 
 interface BaseView {
 
