@@ -1,12 +1,18 @@
 package com.havan.activities.base.presenter
 
+import com.havan.activities.base.view.BaseView
+
 // Created by HaVan on 5/26/2018.
 
-public interface BasePresenterInt {
+open class BasePresenterImpl<in V : BaseView> : BasePresenter<V> {
 
-    fun onGetData()
+    private var mView: V? = null
 
-    fun onUpdateUI()
+    override fun attachView(view: V) {
+        mView = view
+    }
 
-    fun showProgressDialog()
+    override fun detachView() {
+        mView = null
+    }
 }
