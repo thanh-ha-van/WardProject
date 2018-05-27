@@ -1,4 +1,4 @@
-package com.havan.activities.base.view
+package com.havan.base.view
 
 import android.content.Context
 

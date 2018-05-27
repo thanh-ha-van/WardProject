@@ -1,4 +1,4 @@
-package com.havan.scope
+package com.havan.di.scope
 
 import javax.inject.Scope
 
@@ -7,4 +7,4 @@ import javax.inject.Scope
 
 @Scope
 @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
-annotation class PerFragment
+annotation class PerView

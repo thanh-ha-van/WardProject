@@ -1,10 +1,10 @@
-package com.havan.activities.base.view
+package com.havan.base.view
 
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
-import com.havan.activities.base.presenter.BasePresenter
+import com.havan.base.presenter.BasePresenter
 
 
 // Created by HaVan on 5/26/2018.

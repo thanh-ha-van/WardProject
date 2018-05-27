@@ -3,10 +3,10 @@ package com.havan.activities.profile.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.havan.activities.base.view.BaseMvpActivity
+import com.havan.base.view.BaseMvpActivity
 import com.havan.activities.profile.presenter.ProfilePresenter
 import com.havan.activities.profile.presenter.ProfilePresenterImpl
-import com.havan.hereever.R
+import com.havan.R
 import com.havan.objects.Profile
 
 

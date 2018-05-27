@@ -1,6 +1,6 @@
 package com.havan.activities.profile.presenter
 
-import com.havan.activities.base.presenter.BasePresenter
+import com.havan.base.presenter.BasePresenter
 import com.havan.activities.profile.view.ProfileView
 
 

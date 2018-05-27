@@ -1,6 +1,6 @@
 package com.havan.activities.profile.view
 
-import com.havan.activities.base.view.BaseView
+import com.havan.base.view.BaseView
 import com.havan.objects.Profile
 
 

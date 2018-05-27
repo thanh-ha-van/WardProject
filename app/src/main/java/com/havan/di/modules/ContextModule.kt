@@ -1,8 +1,8 @@
-package com.havan.modules
+package com.havan.di.modules
 
 import android.app.Application
 import android.content.Context
-import com.havan.activities.base.view.BaseView
+import com.havan.base.view.BaseView
 import dagger.Module
 import dagger.Provides
 

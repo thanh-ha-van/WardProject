@@ -8,7 +8,7 @@ import android.view.View
 import android.view.Window
 import android.widget.TextView
 import com.havan.constants.DialogConstant
-import com.havan.hereever.R
+import com.havan.R
 
 // Created by HaVan on 5/26/2018
 
