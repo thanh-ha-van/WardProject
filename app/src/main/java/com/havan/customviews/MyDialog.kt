@@ -7,7 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.view.Window
 import android.widget.TextView
-import com.havan.constants.DialogType
+import com.havan.constants.DialogConstant
 import com.havan.hereever.R
 
 // Created by HaVan on 5/26/2018
@@ -37,18 +37,18 @@ public class MyDialog(context: Context, private var interFace: ClickListener?) {
 
         bindView(title, message)
         when (type) {
-            DialogType.TYPE_CONFIRM -> {
+            DialogConstant.TYPE_CONFIRM -> {
                 tvTitle?.setTextColor(myDialog.context.resources.getColor(R.color.green_70))
             }
-            DialogType.TYPE_ERROR -> {
+            DialogConstant.TYPE_ERROR -> {
                 tvTitle?.setTextColor(myDialog.context.resources.getColor(R.color.red_50))
                 tvCancel?.visibility = View.GONE
             }
-            DialogType.TYPE_INFO -> {
+            DialogConstant.TYPE_INFO -> {
                 tvTitle?.setTextColor(myDialog.context.resources.getColor(R.color.blue_70))
                 tvCancel?.visibility = View.GONE
             }
-            DialogType.TYPE_WARNING -> {
+            DialogConstant.TYPE_WARNING -> {
                 tvTitle?.setTextColor(myDialog.context.resources.getColor(R.color.orange_70))
                 tvCancel?.visibility = View.GONE
             }
