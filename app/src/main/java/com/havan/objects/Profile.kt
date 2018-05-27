@@ -1,4 +1,4 @@
-package com.havan.models
+package com.havan.objects
 
 
 // Created by HaVan on 5/26/2018.
