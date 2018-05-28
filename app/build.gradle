@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
-
+kapt {
+    generateStubs = true
+}
 android {
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES.txt'
@@ -18,6 +19,11 @@ android {
         exclude 'META-INF/LGPL2.1'
         exclude 'META-INF/LICENSE-FIREBASE.txt'
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.havan.hereever"
@@ -37,11 +43,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     // google play service
     implementation 'com.google.android.gms:play-services-maps:15.0.1'
+
     // firebase
     implementation 'com.google.firebase:firebase-auth:16.0.1'
     implementation 'com.google.firebase:firebase-messaging:17.0.0'
@@ -57,21 +64,26 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.jakewharton:butterknife:8.7.0'
     implementation 'com.android.support:support-v4:27.1.1'
-    implementation 'de.hdodenhof:circleimageview:1.2.1'
-    implementation 'com.github.bumptech.glide:glide:4.0.0'
+    implementation 'de.hdodenhof:circleimageview:2.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.3.0'
     implementation 'com.wang.avi:library:2.1.3'
     testImplementation 'junit:junit:4.12'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 
     // dagger
+    annotationProcessor(
+            'com.google.dagger:dagger-android-processor:2.14.1',
+            'com.google.dagger:dagger-compiler:2.14.1'
+    )
+
+    implementation "com.google.dagger:dagger:2.14.1"
     implementation 'com.google.dagger:dagger-android:2.14.1'
     implementation 'com.google.dagger:dagger-android-support:2.14.1'
-    annotationProcessor 'com.google.dagger:dagger-android-processor:2.14.1'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.14.1'
 
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.31"
     //Retrofit 2
     implementation "com.squareup.retrofit2:retrofit:2.3.0"
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
     implementation "com.squareup.retrofit2:converter-moshi:2.3.0"
+
 }

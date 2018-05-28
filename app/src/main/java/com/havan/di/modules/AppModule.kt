@@ -2,36 +2,54 @@ package com.havan.di.modules
 
 import android.app.Application
 import android.content.Context
-import com.havan.base.view.BaseView
+import com.havan.application.data.AppDataManager
+import com.havan.application.data.DataManager
+import com.havan.application.prefs.AppPreferencesHelper
+import com.havan.application.prefs.PreferencesHelper
+import com.havan.constants.AppConstants
+import com.havan.di.scope.ApplicationContext
+import com.havan.di.scope.DatabaseInfo
+import com.havan.di.scope.PreferenceInfo
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-
-// Created by HaVan on 5/27/2018.
-
 @Module
-class AppModule(var application: Application) {
+class AppModule(private val mApplication: Application) {
 
-    lateinit var applicationInst: Application
+    @Provides
+    @ApplicationContext
+    internal fun provideContext(): Context {
+        return mApplication
+    }
 
-    init {
-        applicationInst = application
+    @Provides
+    internal fun provideApplication(): Application {
+        return mApplication
+    }
+
+    @Provides
+    @DatabaseInfo
+    internal fun provideDatabaseName(): String {
+        return AppConstants.DB_NAME
+    }
+
+    @Provides
+    @PreferenceInfo
+    internal fun providePreferenceName(): String {
+        return AppConstants.PREF_NAME
     }
 
     @Provides
     @Singleton
-    fun provideApplication(): Application {
-        return applicationInst
+    internal fun provideDataManager(appDataManager: AppDataManager): DataManager {
+        return appDataManager
     }
 
-    @Provides
-    internal fun provideContext(baseView: BaseView): Context {
-        return baseView.getContext()
-    }
 
     @Provides
-    internal fun provideApplication(context: Context): Application {
-        return context.applicationContext as Application
+    @Singleton
+    internal fun providePreferencesHelper(appPreferencesHelper: AppPreferencesHelper): PreferencesHelper {
+        return appPreferencesHelper
     }
 }
