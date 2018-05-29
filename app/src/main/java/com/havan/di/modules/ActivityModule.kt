@@ -18,12 +18,7 @@ package com.havan.di.modules
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import com.havan.activities.profile.presenter.ProfilePresenter
-import com.havan.activities.profile.view.ProfileView
-
 import com.havan.di.scope.ActivityContext
-import com.havan.di.scope.PerActivity
-
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
@@ -37,15 +32,10 @@ class ActivityModule(private val mActivity: AppCompatActivity) {
         return mActivity
     }
 
-
     @Provides
+    @ActivityContext
     internal fun provideActivity(): AppCompatActivity {
         return mActivity
-    }
-
-    @Provides
-    internal fun provideCompositeDisposable(): CompositeDisposable {
-        return CompositeDisposable()
     }
 
     @Provides

@@ -7,7 +7,7 @@ import com.havan.application.data.DataManager
 import com.havan.application.prefs.AppPreferencesHelper
 import com.havan.application.prefs.PreferencesHelper
 import com.havan.constants.AppConstants
-import com.havan.di.scope.ApplicationContext
+import com.havan.di.scope.AppContext
 import com.havan.di.scope.DatabaseInfo
 import com.havan.di.scope.PreferenceInfo
 import dagger.Module
@@ -18,7 +18,7 @@ import javax.inject.Singleton
 class AppModule(private val mApplication: Application) {
 
     @Provides
-    @ApplicationContext
+    @AppContext
     internal fun provideContext(): Context {
         return mApplication
     }

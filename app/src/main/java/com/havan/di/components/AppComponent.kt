@@ -5,7 +5,7 @@ import android.content.Context
 import com.havan.MyApp
 import com.havan.application.data.DataManager
 import com.havan.di.modules.AppModule
-import com.havan.di.scope.ApplicationContext
+import com.havan.di.scope.AppContext
 import dagger.Component
 import javax.inject.Singleton
 
@@ -17,11 +17,11 @@ import javax.inject.Singleton
 @Component(modules = [AppModule::class])
 interface AppComponent {
 
-    val dataManager: DataManager
+    fun getDataManager(): DataManager
 
     fun inject(app: MyApp)
 
-    @ApplicationContext
+    @AppContext
     fun context(): Context
 
     fun application(): Application

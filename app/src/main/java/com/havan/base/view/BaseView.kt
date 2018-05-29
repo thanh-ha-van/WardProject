@@ -1,14 +1,14 @@
 package com.havan.base.view
 
-import android.content.Context
-
 interface BaseView {
 
-    fun attachView(): Int
+    fun showLoading()
 
-    fun updateUI()
+    fun hideLoading()
 
-    fun setUpActionBar()
+    fun onError(message: String)
 
-    fun getContext(): Context
+    fun showMessage(message: String)
+
+    fun hideKeyboard()
 }

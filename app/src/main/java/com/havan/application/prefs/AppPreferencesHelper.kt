@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 
 import com.havan.constants.AppConstants
-import com.havan.di.scope.ApplicationContext
+import com.havan.di.scope.AppContext
 import com.havan.di.scope.PreferenceInfo
 
 import javax.inject.Inject
@@ -13,7 +13,7 @@ import javax.inject.Singleton
 
 @Singleton
 class AppPreferencesHelper @Inject
-constructor(@ApplicationContext context: Context,
+constructor(@AppContext context: Context,
             @PreferenceInfo prefFileName: String) : PreferencesHelper {
 
     companion object {

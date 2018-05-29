@@ -70,8 +70,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
 
-    // dagger
-    annotationProcessor(
+    // annotation
+    kapt(
             'com.google.dagger:dagger-android-processor:2.14.1',
             'com.google.dagger:dagger-compiler:2.14.1'
     )
