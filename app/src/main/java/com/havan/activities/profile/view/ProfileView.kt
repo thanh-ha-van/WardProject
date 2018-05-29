@@ -8,6 +8,6 @@ import com.havan.objects.Profile
 
 interface ProfileView : BaseView {
 
-    fun showProfile(profile: Profile)
+    fun showProfile(profile: String)
 
 }

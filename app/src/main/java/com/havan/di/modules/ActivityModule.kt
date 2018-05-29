@@ -18,10 +18,10 @@ package com.havan.di.modules
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import com.havan.activities.profile.presenter.ProfilePresenter
 import com.havan.di.scope.ActivityContext
 import dagger.Module
 import dagger.Provides
-import io.reactivex.disposables.CompositeDisposable
 
 @Module
 class ActivityModule(private val mActivity: AppCompatActivity) {
@@ -42,4 +42,10 @@ class ActivityModule(private val mActivity: AppCompatActivity) {
     internal fun provideLinearLayoutManager(activity: AppCompatActivity): LinearLayoutManager {
         return LinearLayoutManager(activity)
     }
+
+    @Provides
+    internal fun provideFeedPresenter(presenter: ProfilePresenter): ProfilePresenter {
+        return presenter
+    }
+
 }

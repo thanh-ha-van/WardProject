@@ -7,8 +7,8 @@ import com.havan.base.view.BaseView
 
 interface BasePresenter<in V : BaseView> {
 
-    fun onAttach(mvpView: V)
+     fun onAttach(mvpView: V)
 
-    fun onDetach()
+     fun onDetach()
 
 }
